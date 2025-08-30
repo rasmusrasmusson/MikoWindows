@@ -1,0 +1,48 @@
+﻿# Visual Studio / .NET / WinUI 3
+.vs/
+bin/
+obj/
+[Bb]uild/
+[Ll]og/
+[Aa]rtifacts/
+TestResults/
+launchSettings.json
+
+# Publish / installer output
+Published/
+Installer Location/
+Installed/
+*.msix
+*.msixbundle
+*.appx
+*.appxbundle
+*.appinstaller
+
+# User / machine files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# NuGet
+*.nupkg
+packages/
+*.snupkg
+project.lock.json
+
+# Debug / symbols
+*.pdb
+*.obj
+*.iobj
+*.ipdb
+
+# Logs
+*.log
+
+# IDEs
+.idea/
+*.iml
+
+# OS
+Thumbs.db
+.DS_Store

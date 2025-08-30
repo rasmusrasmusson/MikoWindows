@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0-windows10.0.19041.0</TargetFramework>
+        <UseWinUI>true</UseWinUI>
+        <Nullable>enable</Nullable>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <WindowsSdkPackageVersion>10.0.26100.38</WindowsSdkPackageVersion>
+        <OutputType>WinExe</OutputType>
+
+        <!-- Allow both x86 and x64 builds -->
+        <Platforms>x86;x64</Platforms>
+    </PropertyGroup>
+
+
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.7.250310001" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="9.0.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\MikoMe.Data\MikoMe.Data.csproj" />
+    </ItemGroup>
+
+</Project>

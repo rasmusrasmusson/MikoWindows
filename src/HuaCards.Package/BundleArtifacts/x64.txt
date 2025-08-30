@@ -1,0 +1,6 @@
+MainPackage=E:\Miko Me\WindowsApp\src\HuaCards.Package\bin\x64\Release\HuaCards.Package_1.0.113.0_x64.msix
+SymbolPackage=E:\Miko Me\WindowsApp\src\HuaCards.Package\obj\x64\Release\Symbols\HuaCards.Package_1.0.113.0_x64.appxsym
+ResourcePack=E:\Miko Me\WindowsApp\src\HuaCards.Package\bin\x64\Release\HuaCards.Package_1.0.113.0_scale-100.msix
+ResourcePack=E:\Miko Me\WindowsApp\src\HuaCards.Package\bin\x64\Release\HuaCards.Package_1.0.113.0_scale-125.msix
+ResourcePack=E:\Miko Me\WindowsApp\src\HuaCards.Package\bin\x64\Release\HuaCards.Package_1.0.113.0_scale-150.msix
+ResourcePack=E:\Miko Me\WindowsApp\src\HuaCards.Package\bin\x64\Release\HuaCards.Package_1.0.113.0_scale-400.msix

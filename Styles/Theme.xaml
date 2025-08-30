@@ -1,0 +1,60 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- Light/Dark brushes (only SolidColorBrush to keep things simple and robust) -->
+    <ResourceDictionary.ThemeDictionaries>
+
+        <!-- Light mode -->
+        <ResourceDictionary x:Key="Light">
+            <!-- Brand palette -->
+            <SolidColorBrush x:Key="MikoPrimaryBrush"       Color="#FFFF7A1A"/>
+            <!-- lively orange -->
+            <SolidColorBrush x:Key="MikoPrimaryBrushDark"   Color="#FFE26300"/>
+            <SolidColorBrush x:Key="MikoNavyBrush"          Color="#FF1E2A44"/>
+            <!-- deep navy -->
+            <SolidColorBrush x:Key="MikoSurfaceBrush"       Color="#FFFFF7EC"/>
+            <!-- warm off‑white -->
+            <SolidColorBrush x:Key="MikoOnSurfaceBrush"     Color="#FF1E2A44"/>
+
+            <!-- Make all app pages use the warm surface by default -->
+            <SolidColorBrush x:Key="ApplicationPageBackgroundThemeBrush" Color="#FFFFF7EC"/>
+        </ResourceDictionary>
+
+        <!-- Dark mode -->
+        <ResourceDictionary x:Key="Dark">
+            <SolidColorBrush x:Key="MikoPrimaryBrush"       Color="#FFFF9D3A"/>
+            <SolidColorBrush x:Key="MikoPrimaryBrushDark"   Color="#FFFF7A1A"/>
+            <SolidColorBrush x:Key="MikoNavyBrush"          Color="#FFEDEEF4"/>
+            <SolidColorBrush x:Key="MikoSurfaceBrush"       Color="#FF12171F"/>
+            <SolidColorBrush x:Key="MikoOnSurfaceBrush"     Color="#FFEDEEF4"/>
+
+            <SolidColorBrush x:Key="ApplicationPageBackgroundThemeBrush" Color="#FF12171F"/>
+        </ResourceDictionary>
+
+    </ResourceDictionary.ThemeDictionaries>
+
+    <!-- Global button niceties -->
+    <Style TargetType="Button">
+        <Setter Property="CornerRadius" Value="8"/>
+        <Setter Property="Padding" Value="12,8"/>
+    </Style>
+
+    <!-- Accent CTA button -->
+    <Style x:Key="MikoAccentButtonStyle" TargetType="Button">
+        <Setter Property="Background" Value="{ThemeResource MikoPrimaryBrush}"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="BorderBrush" Value="{ThemeResource MikoPrimaryBrushDark}"/>
+        <Setter Property="CornerRadius" Value="8"/>
+        <Setter Property="Padding" Value="14,10"/>
+    </Style>
+
+    <!-- Title text convenience -->
+    <Style x:Key="MikoTitleTextStyle" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="28"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="Foreground" Value="{ThemeResource MikoOnSurfaceBrush}"/>
+        <Setter Property="Margin" Value="0,0,0,8"/>
+    </Style>
+
+</ResourceDictionary>
