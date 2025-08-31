@@ -1,62 +1,55 @@
-using Microsoft.EntityFrameworkCore;
-using MikoMe.Models;
 using System;
 using System.IO;
-using System.Linq;
+using Microsoft.EntityFrameworkCore;
+using MikoMe.Models;
 
 namespace MikoMe.Data
 {
     public class DatabaseContext : DbContext
     {
-        public DbSet<Word> Words => Set<Word>();
-        public DbSet<Card> Cards => Set<Card>();
-        public DbSet<ReviewLog> ReviewLogs => Set<ReviewLog>();
+        public DatabaseContext(DbContextOptions<DatabaseContext> options)
+            : base(options) { }
 
-        // ✅ new join table
-        public DbSet<SentenceWordLink> SentenceWordLinks => Set<SentenceWordLink>();
+        // ---- DbSets ----
+        public DbSet<Word> Words { get; set; } = default!;
+        public DbSet<Card> Cards { get; set; } = default!;
+        public DbSet<ReviewLog> ReviewLogs { get; set; } = default!;
+        public DbSet<SentenceWordLink> SentenceWordLinks { get; set; } = default!;
+        public DbSet<SplitWord> SplitWords { get; set; } = default!;
+        public DbSet<TokenItem> TokenItems { get; set; } = default!;
 
-        private readonly string _dbPath;
-
-        public DatabaseContext()
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            var docs = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            var dir = Path.Combine(docs, "MikoMe");
-            Directory.CreateDirectory(dir);
-            _dbPath = Path.Combine(dir, "MikoMe.db");
-
-            // OK to keep for now; see “Migrations vs EnsureCreated” below
-            Database.EnsureCreated();
-
-            if (!Words.Any())
+            if (!optionsBuilder.IsConfigured)
             {
-                // your seed… (unchanged)
+                var dir = Path.Combine(
+                    Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+                    "MikoMe");
+                Directory.CreateDirectory(dir);
+                var dbPath = Path.Combine(dir, "miko.db");
+
+                optionsBuilder.UseSqlite($"Data Source={dbPath}");
             }
         }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-            => optionsBuilder.UseSqlite($"Data Source={_dbPath}");
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            // your existing config (Word->Cards etc.) … unchanged
+            // Card → Word (many cards per word)
+            modelBuilder.Entity<Card>()
+                .HasOne(c => c.Word)
+                .WithMany(w => w.Cards)
+                .HasForeignKey(c => c.WordId)
+                .OnDelete(DeleteBehavior.Cascade);
 
-            // ✅ many-to-many between Words (sentence) and Words (token)
-            modelBuilder.Entity<SentenceWordLink>(b =>
-            {
-                b.HasKey(x => new { x.SentenceId, x.WordId });
+            // Keyless projections (no PK; not mapped to a table in migrations)
+            modelBuilder.Entity<SplitWord>().HasNoKey().ToView((string?)null);
+            modelBuilder.Entity<TokenItem>().HasNoKey().ToView((string?)null);
 
-                b.HasOne(x => x.Sentence)
-                 .WithMany(w => w.AsSentenceLinks)
-                 .HasForeignKey(x => x.SentenceId)
-                 .OnDelete(DeleteBehavior.Cascade);
+            // If SentenceWordLink uses a composite key, uncomment and adjust:
+            // modelBuilder.Entity<SentenceWordLink>()
+            //     .HasKey(l => new { l.SentenceId, l.WordId, l.Order });
 
-                b.HasOne(x => x.Word)
-                 .WithMany(w => w.AsWordLinks)
-                 .HasForeignKey(x => x.WordId)
-                 .OnDelete(DeleteBehavior.Cascade);
-
-                b.HasIndex(x => new { x.SentenceId, x.Order });
-            });
+            base.OnModelCreating(modelBuilder);
         }
     }
 }
