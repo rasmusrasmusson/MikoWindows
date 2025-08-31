@@ -9,7 +9,7 @@
     <Identity
       Name="7cc7cda0-929f-46ba-908e-1a794e464ee8"
       Publisher="CN=RasmusRasmusson"
-      Version="1.0.113.0" />
+      Version="1.0.114.0" />
 
     <Properties>
         <DisplayName>MikoMe</DisplayName>

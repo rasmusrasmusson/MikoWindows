@@ -1,6 +1,6 @@
-MainPackage=D:\Backup - 26 Aug - Copy\src\MikoMe.Package\bin\x64\Debug\MikoMe.Package_1.0.113.0_x64_Debug.msix
-SymbolPackage=D:\Backup - 26 Aug - Copy\src\MikoMe.Package\obj\x64\Debug\Symbols\MikoMe.Package_1.0.113.0_x64_Debug.appxsym
-ResourcePack=D:\Backup - 26 Aug - Copy\src\MikoMe.Package\bin\x64\Debug\MikoMe.Package_1.0.113.0_scale-100.msix
-ResourcePack=D:\Backup - 26 Aug - Copy\src\MikoMe.Package\bin\x64\Debug\MikoMe.Package_1.0.113.0_scale-125.msix
-ResourcePack=D:\Backup - 26 Aug - Copy\src\MikoMe.Package\bin\x64\Debug\MikoMe.Package_1.0.113.0_scale-150.msix
-ResourcePack=D:\Backup - 26 Aug - Copy\src\MikoMe.Package\bin\x64\Debug\MikoMe.Package_1.0.113.0_scale-400.msix
+MainPackage=E:\Miko Me\WindowsApp\src\MikoMe.Package\bin\x64\Debug\MikoMe.Package_1.0.114.0_x64_Debug.msix
+SymbolPackage=E:\Miko Me\WindowsApp\src\MikoMe.Package\obj\x64\Debug\Symbols\MikoMe.Package_1.0.114.0_x64_Debug.appxsym
+ResourcePack=E:\Miko Me\WindowsApp\src\MikoMe.Package\bin\x64\Debug\MikoMe.Package_1.0.114.0_scale-100.msix
+ResourcePack=E:\Miko Me\WindowsApp\src\MikoMe.Package\bin\x64\Debug\MikoMe.Package_1.0.114.0_scale-125.msix
+ResourcePack=E:\Miko Me\WindowsApp\src\MikoMe.Package\bin\x64\Debug\MikoMe.Package_1.0.114.0_scale-150.msix
+ResourcePack=E:\Miko Me\WindowsApp\src\MikoMe.Package\bin\x64\Debug\MikoMe.Package_1.0.114.0_scale-400.msix
