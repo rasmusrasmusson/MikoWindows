@@ -1,0 +1,86 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>net8.0-windows10.0.19041.0</TargetFramework>
+        <UseWinUI>true</UseWinUI>
+        <Nullable>enable</Nullable>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <WindowsSdkPackageVersion>10.0.26100.38</WindowsSdkPackageVersion>
+        <OutputType>WinExe</OutputType>
+        <Platforms>x64</Platforms>
+
+        <!-- Let runtime be installed separately, do not embed -->
+        <WindowsAppSDKSelfContained>false</WindowsAppSDKSelfContained>
+    </PropertyGroup>
+    <ItemGroup>
+      <None Remove="Views\SettingsPage.xaml" />
+    </ItemGroup>
+
+    <!-- Resource files -->
+    <ItemGroup>
+        <None Include="Resources\dict.txt">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+            <Pack>True</Pack>
+            <PackagePath>Resources\</PackagePath>
+        </None>
+        <None Include="Resources\hmm_model.utf8">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+            <Pack>True</Pack>
+            <PackagePath>Resources\</PackagePath>
+        </None>
+        <None Include="Resources\idf.txt">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+            <Pack>True</Pack>
+            <PackagePath>Resources\</PackagePath>
+        </None>
+        <None Include="Resources\stop_words.txt">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+            <Pack>True</Pack>
+            <PackagePath>Resources\</PackagePath>
+        </None>
+        <None Include="Resources\prob_emit.json">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+            <Pack>True</Pack>
+            <PackagePath>Resources\</PackagePath>
+        </None>
+        <None Include="Resources\prob_trans.json">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+            <Pack>True</Pack>
+            <PackagePath>Resources\</PackagePath>
+        </None>
+    </ItemGroup>
+
+    <!-- NuGet packages -->
+    <ItemGroup>
+        <PackageReference Include="JiebaNet.Segmenter" Version="1.0.6" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.8" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.8">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="Microsoft.UI.Xaml" Version="2.8.7" />
+        <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.7.250606001" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="9.0.8" />
+        <PackageReference Include="ToolGood.Words" Version="3.1.0.2" />
+    </ItemGroup>
+
+    <!-- Other projects -->
+    <ItemGroup>
+        <ProjectReference Include="..\MikoMe.Data\MikoMe.Data.csproj" />
+    </ItemGroup>
+
+    <!-- Pages -->
+    <ItemGroup>
+        <Page Update="Views\LanguageSessionPage.xaml">
+            <Generator>MSBuild:Compile</Generator>
+        </Page>
+    </ItemGroup>
+    <ItemGroup>
+      <Folder Include="Data\" />
+    </ItemGroup>
+    <ItemGroup>
+      <Page Update="Views\SettingsPage.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </Page>
+    </ItemGroup>
+</Project>
